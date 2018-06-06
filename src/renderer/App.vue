@@ -6,8 +6,8 @@
 
 <script>
   export default {
-    name: 'youtube-dl'
-  }
+    name: 'youtube-dl',
+  };
 </script>
 
 <style>
