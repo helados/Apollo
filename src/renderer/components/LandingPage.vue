@@ -21,16 +21,12 @@
           </div>
         </div>
         <div class="row">
-          <div class="ui icon input">
+          <div class="ui icon input search-input">
             <input type="text" placeholder="Search...">
             <i class="search icon"></i>
           </div>
         </div>
       </div>
-
-
-
-
     </main>
   </div>
 </template>
@@ -130,5 +126,10 @@
   .doc button.alt {
     color: #42b983;
     background-color: transparent;
+  }
+
+  .search-input{
+    width: 450px;
+    height: 60px;
   }
 </style>
