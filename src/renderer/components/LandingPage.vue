@@ -22,7 +22,7 @@
         </div>
         <div class="row">
           <div class="ui icon input search-input">
-            <input type="text" placeholder="Search...">
+            <input type="text" placeholder="Put your url video">
             <i class="search icon"></i>
           </div>
         </div>
