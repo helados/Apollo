@@ -2,29 +2,29 @@
   <div id="wrapper">
     <img id="logo" src="~@/assets/logo.png" alt="electron-vue">
     <main>
-      <div class="left-side">
-        <span class="title">
-          Welcome to your new project!
-        </span>
-        <system-information></system-information>
+
+      <div class="ui middle aligned center aligned grid">
+        <div class="column">
+          <img class="logo" src="static/img/logo.png">
+          <div style="margin-bottom:10vh"></div>
+        </div>
       </div>
 
-      <div class="right-side">
-        <div class="doc">
-          <div class="title">Getting Started</div>
-          <p>
-            electron-vue comes packed with detailed documentation that covers everything from
-            internal configurations, using the project structure, building your application,
-            and so much more.
-          </p>
-          <button @click="open('https://simulatedgreg.gitbooks.io/electron-vue/content/')">Read the Docs</button><br><br>
-        </div>
-        <div class="doc">
-          <div class="title alt">Other Documentation</div>
-          <button class="alt" @click="open('https://electron.atom.io/docs/')">Electron</button>
-          <button class="alt" @click="open('https://vuejs.org/v2/guide/')">Vue.js</button>
+      <div class="ui four column grid">
+        <div class="row">
+          <div class="column"></div>
+          <div class="column">
+            <button class="fluid ui blue button choice-button">One</button>
+          </div>
+          <div class="column">
+            <button class="fluid ui circle blue button choice-button">Two</button>
+          </div>
         </div>
       </div>
+
+
+
+
     </main>
   </div>
 </template>
