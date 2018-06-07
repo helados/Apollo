@@ -20,6 +20,12 @@
             <button class="fluid ui circle blue button choice-button">Two</button>
           </div>
         </div>
+        <div class="row">
+          <div class="ui icon input">
+            <input type="text" placeholder="Search...">
+            <i class="search icon"></i>
+          </div>
+        </div>
       </div>
 
 
