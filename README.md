@@ -1,4 +1,4 @@
-# youtube-dl
+# MediaDL
 
 > Download your favorite videos into .mp3 tracks from a client built with web technology
 

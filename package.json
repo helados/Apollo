@@ -1,8 +1,8 @@
 {
-  "name": "youtube-dl",
+  "name": "media-dl",
   "version": "0.0.0",
   "author": "Hugo Torzuoli <torzuoli.hugo@gmail.com>",
-  "description": "Download your favorite videos into .mp3 tracks from a client built with web technology",
+  "description": "Download mp3 files from YouTube and Soundcloud through a client built with web technology",
   "license": null,
   "main": "./dist/electron/main.js",
   "scripts": {
@@ -22,7 +22,7 @@
     "postinstall": "npm run lint:fix"
   },
   "build": {
-    "productName": "youtube-dl",
+    "productName": "media-dl",
     "appId": "org.simulatedgreg.electron-vue",
     "directories": {
       "output": "build"
