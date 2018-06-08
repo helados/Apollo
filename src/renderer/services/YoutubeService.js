@@ -1,7 +1,6 @@
-// const youtubedl = require('youtube-dl');
 const youtubedl = require('ytdl-core');
 
-export default class RestResource {
+export default class YoutubeService {
   static getInformations(link, callback) {
     return youtubedl.getInfo(link, callback);
   }
