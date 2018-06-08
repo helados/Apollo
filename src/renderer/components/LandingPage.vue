@@ -52,6 +52,7 @@
               <p>Title : {{info.title}}</p>
               <p>By : <a :href="info.author.user_url" target="_blank">{{info.author.name}}</a></p>
               <p>Views : {{info.view_count}}</p>
+              <button @click="download()">Download</button>
                 </div>
             </div>
         </div>
@@ -105,6 +106,9 @@
           this.info = info;
           this.loading = false;
         });
+      },
+      download() {
+        YoutubeService.downloadVideo(this.link);
       },
       isLinkValid() {
         if (!this.link) return false;
