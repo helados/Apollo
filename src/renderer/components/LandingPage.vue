@@ -76,6 +76,7 @@
     },
     methods: {
       getFile() {
+        this.info = null;
         this.loading = true;
         YoutubeService.getInformations(this.link, (err, info) => {
           if (err) {
