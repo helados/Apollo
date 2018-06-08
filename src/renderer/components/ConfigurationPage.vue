@@ -1,8 +1,6 @@
 <template>
   <div id="wrapper">
     <main>
-
-
       <div class="ui middle aligned center aligned grid">
         <div class="column">
           <div style="margin-top:2vh"></div>

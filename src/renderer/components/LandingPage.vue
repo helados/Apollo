@@ -10,10 +10,14 @@
 
       <div class="ui middle aligned grid">
         <div class="column logo">
-          <h2 class="ui aligned icon"> <i class="white circular music icon"></i> &nbsp; Helados Apollon  </h2>
-          <div style="margin-bottom:6vh"></div>
+          <span class="apollon">   <i class="white circular music icon"></i> Helados Apollon</span>
+          <router-link :to="{name: 'configuration-page'}">
+            <span class="settings">  <i class="white large setting icon"></i> Settings</span>
+          </router-link>
         </div>
       </div>
+
+      <div style="margin-bottom:6vh"></div>
 
       <div style="margin: 100px">
         <div class="ui one column grid">
@@ -30,19 +34,6 @@
         </div>
       </div>
 
-      <div class="ui three column grid">
-        <div class="row">
-          <div class="column"></div>
-          <div class="column">
-            <div class="ui fluid action input">
-              <router-link :to="{name: 'configuration-page'}"><button class="ui blue right labeled icon button">
-                <i class="window restore outline icon"></i>
-                Customize your theme
-              </button></router-link>
-            </div>
-          </div>
-        </div>
-      </div>
 
         <div class="ui three column grid videoInfo" v-if="info">
           <div class="row">
@@ -151,5 +142,23 @@ body {
   .logo {
     margin-left: 25px;
     color:white;
+  }
+
+  .apollon {
+    font-size: 1.4em;
+    font-weight:bold;
+  }
+
+  .settings {
+    position:absolute;
+    right:40px;
+    top: 20px;
+    font-size: 1.1em;
+    font-weight:bold;
+    color:white;
+  }
+
+  .settings:hover {
+    color: grey;
   }
 </style>
