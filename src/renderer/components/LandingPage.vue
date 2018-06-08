@@ -27,6 +27,22 @@
           </div>
         </div>
       </div>
+
+      <div class="ui three column grid">
+        <div class="row">
+          <div class="column"></div>
+          <div class="column">
+            <div class="ui fluid action input">
+              <router-link :to="{name: 'configuration-page'}"><button class="ui blue right labeled icon button">
+                <i class="window restore outline icon"></i>
+                Customize your theme
+              </button></router-link>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="ui three column grid videoInfo" v-if="info">
           <div class="row">
             <div class="column"></div>
