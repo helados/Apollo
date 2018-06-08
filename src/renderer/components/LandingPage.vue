@@ -32,7 +32,21 @@
         </div>
       </div>
 
-      <div class="ui three column grid videoInfo" v-if="info">
+      <div class="ui three column grid">
+        <div class="row">
+          <div class="column"></div>
+          <div class="column">
+            <div class="ui fluid action input">
+              <router-link :to="{name: 'configuration-page'}"><button class="ui blue right labeled icon button">
+                <i class="window restore outline icon"></i>
+                Customize your theme
+              </button></router-link>
+            </div>
+          </div>
+        </div>
+      </div>
+
+        <div class="ui three column grid videoInfo" v-if="info">
           <div class="row">
             <div class="column"></div>
             <div class="column">
@@ -40,24 +54,24 @@
               <p>Title : {{info.title}}</p>
               <p>By : <a :href="info.author.user_url" target="_blank">{{info.author.name}}</a></p>
               <p>Views : {{info.view_count}}</p>
+                </div>
             </div>
-          </div>
-      </div>
-
-      <div class="ui three column grid videoInfo" v-if="error">
-          <div class="row">
-            <div class="column"></div>
-            <div class="column">
-                <p><i class="red exclamation circle icon"></i> Error when getting Youtube video</p>
-            </div>
-          </div>
-      </div>
-
-      <div class="ui inverted vertical footer segment form-page">
-        <div class="ui container">
-          <p align="center">A Helados Project. &nbsp; Made with <i class="red heart icon"></i>by the team</p>
         </div>
-      </div>
+
+        <div class="ui three column grid videoInfo" v-if="error">
+            <div class="row">
+                <div class="column"></div>
+                <div class="column">
+                    <p><i class="red exclamation circle icon"></i> Error when getting Youtube video</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="ui inverted vertical footer segment form-page">
+            <div class="ui container">
+                <p align="center">A Helados Project. &nbsp; Made with <i class="red heart icon"></i>by the team</p>
+            </div>
+        </div>
     </main>
   </div>
 </template>
