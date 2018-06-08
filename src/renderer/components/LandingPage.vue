@@ -2,6 +2,10 @@
   <div id="wrapper">
     <main>
 
+      <sui-dimmer active v-if="loading">
+        <sui-loader indeterminate>Calling Youtube...</sui-loader>
+      </sui-dimmer>
+
       <div class="ui middle aligned center aligned grid">
         <div class="column">
           <div style="margin-top:2vh"></div>
@@ -27,6 +31,7 @@
           </div>
         </div>
       </div>
+
       <div class="ui three column grid videoInfo" v-if="info">
           <div class="row">
             <div class="column"></div>
@@ -55,13 +60,16 @@
       return {
         link: null,
         info: null,
+        loading: false,
       };
     },
     methods: {
       getFile() {
+        this.loading = true;
         YoutubeService.getInformations(this.link, (err, info) => {
           if (err) throw err;
           this.info = info;
+          this.loading = false;
         });
       },
     },
