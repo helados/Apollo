@@ -38,8 +38,8 @@
             <div class="column">
               <p><sui-image :src="info.thumbnail_url" size="medium"/></p>
               <p>Title : {{info.title}}</p>
-              <!-- <p>Duration : {{info.duration}}</p> -->
-              <!-- <p>{{info.like_count}} <i class="red heart icon"></i> {{info.dislike_count}} <i class="yellow heart outline icon"></i></p> -->
+              <p>By : <a :href="info.author.user_url" target="_blank">{{info.author.name}}</a></p>
+              <p>Views : {{info.view_count}}</p>
             </div>
           </div>
       </div>
@@ -64,6 +64,7 @@
 
 <script>
   import YoutubeService from '../services/YoutubeService';
+  import UtilService from '../services/UtilService';
   export default {
     name: 'landing-page',
     data() {
@@ -85,12 +86,8 @@
             throw err;
           }
           if (info) {
-            console.log(info);
-            if (info.like_count) {
-              info.like_count = info.like_count > 999 ? `${(info.like_count / 1000).toFixed(1)}k` : info.like_count;
-            }
-            if (info.dislike_count) {
-              info.dislike_count = info.dislike_count > 999 ? `${(info.dislike_count / 1000).toFixed(1)}k` : info.dislike_count;
+            if (info.view_count) {
+              info.view_count = UtilService.transformThousandToK(info.view_count);
             }
           }
           this.info = info;
