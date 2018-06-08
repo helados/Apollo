@@ -23,7 +23,7 @@
           <div class="column">
             <div class="ui fluid action input">
               <input type="text" placeholder="YouTube URL" v-model="link">
-              <button class="ui red right labeled icon button" @click="getFile()">
+              <button class="ui red right labeled icon button" @click="getFile()" :disabled="!isLinkValid()">
                 <i class="music icon"></i>
                 Convert
               </button>
@@ -71,6 +71,13 @@
           this.info = info;
           this.loading = false;
         });
+      },
+      isLinkValid() {
+        if (!this.link) return false;
+        // eslint-disable-next-line no-useless-escape
+        const expression = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
+        const urlRegex = new RegExp(expression);
+        return this.link.match(urlRegex);
       },
     },
   };
