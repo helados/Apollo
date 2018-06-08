@@ -9,8 +9,8 @@
       <div style="margin-top:2vh"></div>
 
       <div class="ui middle aligned grid">
-        <div style="margin-left: 25px; color:white;" class="column">
-          <h2 class="ui aligned icon "> <i class="white circular music icon"></i> &nbsp; Helados Apollon  </h2>
+        <div class="column logo">
+          <h2 class="ui aligned icon"> <i class="white circular music icon"></i> &nbsp; Helados Apollon  </h2>
           <div style="margin-bottom:6vh"></div>
         </div>
       </div>
@@ -147,4 +147,9 @@ body {
     width: 100%;
   }
 }
+
+  .logo {
+    margin-left: 25px;
+    color:white;
+  }
 </style>
