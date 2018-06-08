@@ -84,6 +84,14 @@
             this.loading = false;
             throw err;
           }
+          if (info) {
+            if (info.like_count) {
+              info.like_count = info.like_count > 999 ? `${(info.like_count / 1000).toFixed(1)}k` : info.like_count;
+            }
+            if (info.dislike_count) {
+              info.dislike_count = info.dislike_count > 999 ? `${(info.dislike_count / 1000).toFixed(1)}k` : info.dislike_count;
+            }
+          }
           this.info = info;
           this.loading = false;
         });
