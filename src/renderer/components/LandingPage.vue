@@ -34,7 +34,7 @@
               <p><sui-image :src="info.thumbnail" size="medium"/></p>
               <p>Title : {{info.title}}</p>
               <p>Duration : {{info.duration}}</p>
-              <p>Likes : {{info.like_count}} <i class="red heart icon"></i></p>
+              <p>{{info.like_count}} <i class="red heart icon"></i> {{info.dislike_count}} <i class="yellow heart outline icon"></i></p>
             </div>
           </div>
       </div>
@@ -48,7 +48,7 @@
 </template>
 
 <script>
-  const youtubedl = require('youtube-dl');
+  import YoutubeService from '../services/YoutubeService';
   export default {
     name: 'landing-page',
     data() {
@@ -59,10 +59,8 @@
     },
     methods: {
       getFile() {
-        youtubedl.getInfo(this.link, null, (err, info) => {
+        YoutubeService.getInformations(this.link, (err, info) => {
           if (err) throw err;
-          console.log(info);
-
           this.info = info;
         });
       },
