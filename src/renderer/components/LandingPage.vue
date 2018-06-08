@@ -1,30 +1,35 @@
 <template>
   <div id="wrapper">
-    <img id="logo" src="~@/assets/logo.png" alt="electron-vue">
     <main>
 
       <div class="ui middle aligned center aligned grid">
         <div class="column">
-          <img class="logo" src="static/img/logo.png">
-          <div style="margin-bottom:10vh"></div>
+          <div style="margin-top:2vh"></div>
+          <h2 class="ui inverted center aligned icon header">
+            <i class="circular music icon"></i> <br>
+            Media Downloader
+          </h2>
+          <div style="margin-bottom:6vh"></div>
         </div>
       </div>
 
-      <div class="ui four column grid">
+      <div class="ui three column grid">
         <div class="row">
           <div class="column"></div>
           <div class="column">
-            <button class="fluid ui blue button choice-button">One</button>
-          </div>
-          <div class="column">
-            <button class="fluid ui circle blue button choice-button">Two</button>
+            <div class="ui fluid action input">
+              <input type="text" placeholder="YouTube URL">
+              <button class="ui red right labeled icon button">
+                <i class="music icon"></i>
+                Convert
+              </button>
+            </div>
           </div>
         </div>
-        <div class="row">
-          <div class="ui icon input search-input">
-            <input type="text" placeholder="Put your url video">
-            <i class="search icon"></i>
-          </div>
+      </div>
+      <div class="ui inverted vertical footer segment form-page">
+        <div class="ui container">
+          <p align="center">A Helados Project. &nbsp; Made with <i class="red heart icon"></i>by the team</p>
         </div>
       </div>
     </main>
@@ -54,82 +59,17 @@
     padding: 0;
   }
 
-  body { font-family: 'Source Sans Pro', sans-serif; }
-
-  #wrapper {
-    background:
-      radial-gradient(
-        ellipse at top left,
-        rgba(255, 255, 255, 1) 40%,
-        rgba(229, 229, 229, .9) 100%
-      );
-    height: 100vh;
-    padding: 60px 80px;
-    width: 100vw;
+  body {
+    font-family: 'Source Sans Pro', sans-serif;
+    background-color: #445260;
   }
 
-  #logo {
-    height: auto;
-    margin-bottom: 20px;
-    width: 420px;
+  @media (min-height: 320px) {
+    .ui.footer.form-page { /* Increased specificity for SO snippet priority */
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }
   }
 
-  main {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  main > div { flex-basis: 50%; }
-
-  .left-side {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .welcome {
-    color: #555;
-    font-size: 23px;
-    margin-bottom: 10px;
-  }
-
-  .title {
-    color: #2c3e50;
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 6px;
-  }
-
-  .title.alt {
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
-
-  .doc p {
-    color: black;
-    margin-bottom: 10px;
-  }
-
-  .doc button {
-    font-size: .8em;
-    cursor: pointer;
-    outline: none;
-    padding: 0.75em 2em;
-    border-radius: 2em;
-    display: inline-block;
-    color: #fff;
-    background-color: #4fc08d;
-    transition: all 0.15s ease;
-    box-sizing: border-box;
-    border: 1px solid #4fc08d;
-  }
-
-  .doc button.alt {
-    color: #42b983;
-    background-color: transparent;
-  }
-
-  .search-input{
-    width: 450px;
-    height: 60px;
-  }
 </style>
