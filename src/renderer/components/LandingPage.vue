@@ -3,30 +3,28 @@
     <main>
 
       <sui-dimmer active v-if="loading">
-        <sui-loader indeterminate>Calling Youtube...</sui-loader>
+        <sui-loader indeterminate>Converting</sui-loader>
       </sui-dimmer>
 
-      <div class="ui middle aligned center aligned grid">
-        <div class="column">
-          <div style="margin-top:2vh"></div>
-          <h2 class="ui inverted center aligned icon header">
-            <i class="circular music icon"></i> <br>
-            Media Downloader
-          </h2>
+      <div style="margin-top:2vh"></div>
+
+      <div class="ui middle aligned grid">
+        <div style="margin-left: 25px; color:white;" class="column">
+          <h2 class="ui aligned icon "> <i class="white circular music icon"></i> &nbsp; Helados Apollon  </h2>
           <div style="margin-bottom:6vh"></div>
         </div>
       </div>
 
-      <div class="ui three column grid">
-        <div class="row">
-          <div class="column"></div>
-          <div class="column">
-            <div class="ui fluid action input">
-              <input type="text" placeholder="YouTube URL" v-model="link">
-              <button class="ui red right labeled icon button" @click="getFile()" :disabled="!isLinkValid()">
-                <i class="music icon"></i>
-                Convert
-              </button>
+      <div style="margin: 100px">
+        <div class="ui one column grid">
+          <div class="row">
+            <div class="column">
+              <div class="ui massive fluid action input">
+                <input type="text" placeholder="YouTube URL" v-model="link">
+                <button class="ui massive red icon button" @click="getFile()" :disabled="!isLinkValid()">
+                  &nbsp;&nbsp;&nbsp; <i class="search icon"></i> &nbsp;&nbsp;&nbsp;
+                </button>
+              </div>
             </div>
           </div>
         </div>
