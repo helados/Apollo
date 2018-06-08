@@ -43,6 +43,16 @@
             </div>
           </div>
       </div>
+
+      <div class="ui three column grid videoInfo" v-if="error">
+          <div class="row">
+            <div class="column"></div>
+            <div class="column">
+                <p><i class="red exclamation circle icon"></i> Error when getting Youtube video</p>
+            </div>
+          </div>
+      </div>
+
       <div class="ui inverted vertical footer segment form-page">
         <div class="ui container">
           <p align="center">A Helados Project. &nbsp; Made with <i class="red heart icon"></i>by the team</p>
@@ -61,13 +71,18 @@
         link: null,
         info: null,
         loading: false,
+        error: false,
       };
     },
     methods: {
       getFile() {
         this.loading = true;
         YoutubeService.getInformations(this.link, (err, info) => {
-          if (err) throw err;
+          if (err) {
+            this.error = true;
+            this.loading = false;
+            throw err;
+          }
           this.info = info;
           this.loading = false;
         });
