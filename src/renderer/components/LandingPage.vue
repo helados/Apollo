@@ -36,10 +36,10 @@
           <div class="row">
             <div class="column"></div>
             <div class="column">
-              <p><sui-image :src="info.thumbnail" size="medium"/></p>
+              <p><sui-image :src="info.thumbnail_url" size="medium"/></p>
               <p>Title : {{info.title}}</p>
-              <p>Duration : {{info.duration}}</p>
-              <p>{{info.like_count}} <i class="red heart icon"></i> {{info.dislike_count}} <i class="yellow heart outline icon"></i></p>
+              <!-- <p>Duration : {{info.duration}}</p> -->
+              <!-- <p>{{info.like_count}} <i class="red heart icon"></i> {{info.dislike_count}} <i class="yellow heart outline icon"></i></p> -->
             </div>
           </div>
       </div>
@@ -85,6 +85,7 @@
             throw err;
           }
           if (info) {
+            console.log(info);
             if (info.like_count) {
               info.like_count = info.like_count > 999 ? `${(info.like_count / 1000).toFixed(1)}k` : info.like_count;
             }
