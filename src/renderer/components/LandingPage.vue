@@ -10,7 +10,7 @@
 
       <div class="ui middle aligned grid">
         <div class="column logo">
-          <span class="apollon">   <i class="white circular music icon"></i> Helados Apollon</span>
+          <span class="apollon">   <i class="white circular music icon"></i> Helados Apollo</span>
           <router-link :to="{name: 'configuration-page'}">
             <span class="settings">  <i class="white large setting icon"></i> Settings</span>
           </router-link>
@@ -142,6 +142,7 @@ body {
   .logo {
     margin-left: 25px;
     color:white;
+    user-select: none;
   }
 
   .apollon {
@@ -161,4 +162,14 @@ body {
   .settings:hover {
     color: grey;
   }
+
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 </style>
