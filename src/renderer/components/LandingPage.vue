@@ -99,7 +99,8 @@
         });
       },
       download() {
-        YoutubeService.downloadVideo(this.link);
+        // YoutubeService.downloadVideo(this.link);
+        YoutubeService.downloadAudio();
       },
       isLinkValid() {
         if (!this.link) return false;
