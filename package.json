@@ -65,7 +65,8 @@
     "vue-electron": "^1.0.6",
     "vue-router": "^2.5.3",
     "vuex": "^2.3.1",
-    "ytdl-core": "^0.20.4"
+    "ytdl-core": "^0.20.4",
+    "fluent-ffmpeg": "^2.1.2"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
