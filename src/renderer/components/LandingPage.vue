@@ -11,7 +11,7 @@
       <div class="ui middle aligned grid">
         <div class="column logo">
           <span class="apollon">   <i class="white circular music icon"></i> Helados Apollo</span>
-          <router-link :to="{name: 'configuration-page'}">
+          <router-link :to="{name: 'settings-page'}">
             <span class="settings">  <i class="white large setting icon"></i> Settings</span>
           </router-link>
         </div>
