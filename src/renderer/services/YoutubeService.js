@@ -1,7 +1,10 @@
 const ytdl = require('ytdl-core');
 const fs = require('fs');
+const ffmpegPath = require('@ffmpeg-installer/ffmpeg').path;
 const ffmpeg = require('fluent-ffmpeg');
 const readline = require('readline');
+
+ffmpeg.setFfmpegPath(ffmpegPath);
 
 export default class YoutubeService {
   static getInformations(link, callback) {
