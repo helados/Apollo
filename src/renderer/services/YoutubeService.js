@@ -10,6 +10,7 @@ export default class YoutubeService {
   static getInformations(link, callback) {
     return ytdl.getInfo(link, callback);
   }
+
   static downloadVideo(link) {
     ytdl(link, { filter: format => format.container === 'mp4' }).pipe(fs.createWriteStream('video.mp4'));
   }
@@ -19,10 +20,13 @@ export default class YoutubeService {
     const stream = ytdl(id, {
       quality: 'highestaudio', // filter: 'audioonly',
     });
+
+    const directory = localStorage.getItem('selectedDirectory');
+    console.log(directory);
     // const start = Date.now();9**
     ffmpeg(stream)
       .audioBitrate(128)
-      .save(`${__dirname}/${id}.mp3`)
+      .save(`${directory}/${id}.mp3`)
       .on('progress', (p) => {
         readline.cursorTo(process.stdout, 0);
         process.stdout.write(`${p.targetSize}kb downloaded`);
