@@ -99,7 +99,7 @@
         });
       },
       download() {
-        // YoutubeService.downloadVideo(this.link);
+        UtilService.selectDirectory();
         YoutubeService.downloadAudio();
       },
       isLinkValid() {
