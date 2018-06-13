@@ -22,7 +22,6 @@ export default class YoutubeService {
     });
 
     const directory = localStorage.getItem('selectedDirectory');
-    console.log(directory);
     // const start = Date.now();9**
     ffmpeg(stream)
       .audioBitrate(128)
