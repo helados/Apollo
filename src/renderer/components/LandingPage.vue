@@ -39,10 +39,27 @@
           <div class="row">
             <div class="column"></div>
             <div class="column">
-              <p><sui-image :src="info.thumbnail_url" size="medium"/></p>
-              <p>Title : {{info.title}}</p>
-              <p>By : <a :href="info.author.user_url" target="_blank">{{info.author.name}}</a></p>
-              <p>Views : {{info.view_count}}</p>
+
+             <div class="audio-player">
+                 <div id="play-btn"><i class="play icon"></i></div>
+                 <div class="audio-wrapper" id="player-container" href="javascript:;">
+                     <audio id="player" ontimeupdate="initProgressBar()">
+                         <source src="http://www.lukeduncan.me/oslo.mp3" type="audio/mp3">
+                     </audio>
+                 </div>
+                 <div class="player-controls scrubber">
+                     <p>{{info.title}} - {{info.author.name}}</p>
+                     <span id="seekObjContainer">
+			  <progress id="seekObj" value="0" max="1"></progress>
+			</span>
+                        <br>
+                        <small style="float: left; position: relative; left: 15px;" class="start-time"></small>
+                        <small style="float: right; position: relative; right: 20px;" class="end-time"></small>
+
+                    </div>
+                    <div class="album-image" style="background-image: url('https://artwork-cdn.7static.com/static/img/sleeveart/00/051/614/0005161476_350.jpg')"></div>
+                </div>
+              <p><sui-image :src="info.thumbnail_url" size="small"/></p>
               <button @click="download()">Download</button>
                 </div>
             </div>
@@ -172,5 +189,61 @@ body {
   -ms-user-select: none;
   user-select: none;
 }
+
+
+.audio-player {
+    background: white;
+    border: 1px solid #dfdfdf;
+    width: 50vw;
+    text-align: center;
+    display: flex;
+    flex-flow: row;
+    margin: 4rem 0 4rem 0;
+}
+.audio-player .album-image {
+    min-height: 100px;
+    width: 110px;
+    background-size: cover;
+}
+.audio-player .player-controls {
+    align-items: center;
+    justify-content: center;
+    margin-top: 2.5rem;
+    flex: 3;
+}
+.audio-player .player-controls progress {
+    width: 90%;
+}
+.audio-player .player-controls progress[value] {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: white;
+    color: blue;
+    height: 5px;
+}
+.audio-player .player-controls progress[value]::-webkit-progress-bar {
+    background-color: white;
+    border-radius: 2px;
+    border: 1px solid #dfdfdf;
+    color: blue;
+}
+.audio-player .player-controls progress::-webkit-progress-value {
+    background-color: blue;
+}
+.audio-player .player-controls p {
+    font-size: 1.6rem;
+}
+.audio-player #play-btn {
+    font-size:3em;
+    color:black;
+    margin: 3.4rem 0 2rem 2rem;
+}
+.audio-player #play-btn.pause {
+    background-image: url("http://www.lukeduncan.me/images/pause-button.png");
+}
+
+.player-controls p { color: black}
+
+
 
 </style>
