@@ -141,7 +141,7 @@
 
 body {
   font-family: "Source Sans Pro", sans-serif;
-  background-color: #445260;
+  background: linear-gradient(to bottom, #7798a9 0%, #4e4260 100%);
 }
 
 .videoInfo {
@@ -178,7 +178,7 @@ body {
   }
 
   .settings:hover {
-    color: grey;
+    color: #2d3957;
   }
 
 .noselect {
@@ -243,6 +243,7 @@ body {
 }
 
 .player-controls p { color: black}
+
 
 
 
