@@ -54,9 +54,8 @@
                      <small style="float: left; position: relative; left: 15px;" class="start-time"></small>
                      <small style="float: right; position: relative; right: 20px;" class="end-time"></small>
                  </div>
-                 <div id="action-btn"><i class="download icon"></i></div>
+                 <div @click="download()" id="action-btn"><i class="download icon"></i></div>
              </div>
-             <button @click="download()">Download</button>
             </div>
           </div>
         </div>
@@ -241,6 +240,7 @@ body {
     color:black;
     margin-right: 30px;
     margin-top: 50px;
+    cursor: pointer;
 }
 
 
