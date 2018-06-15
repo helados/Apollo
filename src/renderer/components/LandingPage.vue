@@ -2,10 +2,6 @@
   <div id="wrapper">
     <main>
 
-      <!---<sui-dimmer active v-if="loading">
-        <sui-loader indeterminate>Converting</sui-loader>
-      </sui-dimmer> -->
-
       <div style="margin-top:2vh"></div>
 
       <div class="ui middle aligned grid">
@@ -25,8 +21,10 @@
             <div class="column">
               <div class="ui massive fluid action input">
                 <input type="text" placeholder="YouTube URL" v-model="link">
-                <button class="ui massive red icon button" @click="getFile()" :disabled="!isLinkValid()">
-                  &nbsp;&nbsp;&nbsp; <i class="search icon"></i> &nbsp;&nbsp;&nbsp;
+                <button v-if="loading" class="ui loading massive red icon button search-button" @click="getFile()" :disabled="!isLinkValid()">
+                </button>
+                <button v-else class="ui massive red icon button search-button" @click="getFile()" :disabled="!isLinkValid()">
+                    <i class="search icon"></i>
                 </button>
               </div>
             </div>
@@ -249,6 +247,12 @@ body {
 .player-controls .headline {
     color: black;
     font-size: 1.3em;
+}
+
+.search-button {
+    padding: 0 2em !important;
+    min-width:124px;
+
 }
 
 
