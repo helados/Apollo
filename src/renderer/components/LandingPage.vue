@@ -106,8 +106,9 @@
             throw err;
           }
           if (info) {
-            if (info.view_count) {
-              info.view_count = UtilService.transformThousandToK(info.view_count);
+            if (info.title.length > 25) {
+              info.title = info.title.slice(0, 25);
+              info.title += '...';
             }
           }
           this.info = info;
