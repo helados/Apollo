@@ -2,9 +2,9 @@
   <div id="wrapper">
     <main>
 
-      <sui-dimmer active v-if="loading">
+      <!---<sui-dimmer active v-if="loading">
         <sui-loader indeterminate>Converting</sui-loader>
-      </sui-dimmer>
+      </sui-dimmer> -->
 
       <div style="margin-top:2vh"></div>
 
@@ -48,7 +48,7 @@
                      </audio>
                  </div>
                  <div class="player-controls scrubber">
-                     <p>{{info.title}} - {{info.author.name}}</p>
+                     <span class="headline">{{info.title}} - {{info.author.name}}</span>
                      <span id="seekObjContainer">
 			            <progress id="seekObj" value="0" max="1"></progress>
 			         </span>
@@ -56,6 +56,7 @@
                      <small style="float: left; position: relative; left: 15px;" class="start-time"></small>
                      <small style="float: right; position: relative; right: 20px;" class="end-time"></small>
                  </div>
+                 <div id="action-btn"><i class="download icon"></i></div>
              </div>
              <button @click="download()">Download</button>
             </div>
@@ -191,7 +192,6 @@ body {
 
 .audio-player {
     background: white;
-    border: 1px solid #dfdfdf;
     width: 100%;
     text-align: center;
     display: flex;
@@ -236,11 +236,19 @@ body {
     color:black;
     margin: 3.4rem 0 2rem 2.3rem;
 }
-.audio-player #play-btn.pause {
-    background-image: url("http://www.lukeduncan.me/images/pause-button.png");
+
+.audio-player #action-btn {
+    font-size:3em;
+    color:black;
+    margin-right: 30px;
+    margin-top: 50px;
 }
 
-.player-controls p { color: black}
+
+.player-controls .headline {
+    color: black;
+    font-size: 1.3em;
+}
 
 
 
