@@ -1,0 +1,12 @@
+{
+  "default": {
+    "audio": {
+      "format": "mp3",
+      "bitrate": 128
+    },
+    "ui": {
+      "theme": "dark",
+      "language": "en"
+    }
+  }
+}
