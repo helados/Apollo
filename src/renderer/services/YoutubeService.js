@@ -21,13 +21,14 @@ export default class YoutubeService {
       quality: 'highestaudio', // filter: 'audioonly',
     });
 
-    const directory = localStorage.getItem('selectedDirectory');
+    const path = localStorage.getItem('chosenPath');
     // const start = Date.now();9**
     ffmpeg(stream)
       .audioBitrate(128)
-      .save(`${directory}/${id}.mp3`)
+      .save(`${path}.mp3`)
       .on('progress', (p) => {
         readline.cursorTo(process.stdout, 0);
+        console.log(`${p.targetSize}kb downloaded`);
         process.stdout.write(`${p.targetSize}kb downloaded`);
       })
       .on('end', () => {

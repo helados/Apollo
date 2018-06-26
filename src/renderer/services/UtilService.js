@@ -7,12 +7,12 @@ export default class YoutubeService {
   }
 
   static selectDirectory() {
-    const fileSelector = dialog.showOpenDialog(remote.getCurrentWindow, { properties: ['openDirectory'], title: 'Select a folder to save your track' });
+    const fileSelector = dialog.showSaveDialog(remote.getCurrentWindow, { filters: [{ name: 'Audio .mp3 file', extensions: ['mp3'] }], title: 'Select a folder to save your track' });
     // If a folder was selected and not just closed,
     // set the localStorage value to that path and adjust the state.
     if (fileSelector) {
-      const pathToStore = fileSelector[0];
-      localStorage.setItem('selectedDirectory', pathToStore);
+      const pathToStore = fileSelector;
+      localStorage.setItem('chosenPath', pathToStore);
     }
   }
 }
