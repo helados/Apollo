@@ -16,7 +16,6 @@ export default class YoutubeService {
   }
   static downloadAudio() {
     const id = 'sDLsSQf3Hc0';
-
     const stream = ytdl(id, {
       quality: 'highestaudio', // filter: 'audioonly',
     });
@@ -25,14 +24,21 @@ export default class YoutubeService {
     // const start = Date.now();9**
     ffmpeg(stream)
       .audioBitrate(128)
-      .save(`${path}.mp3`)
+      .save(`tmp/${id}.mp3`)
       .on('progress', (p) => {
         readline.cursorTo(process.stdout, 0);
-        console.log(`${p.targetSize}kb downloaded`);
         process.stdout.write(`${p.targetSize}kb downloaded`);
       })
       .on('end', () => {
-        // console.log(`\ndone, thanks - ${(Date.now() - start) / 1000}s`);
+        const source = fs.createReadStream(`tmp/${id}.mp3`);
+        const dest = fs.createWriteStream(`${path}.mp3`);
+
+        source.on('close', () => {
+          fs.unlinkSync(`tmp/${id}.mp3`);
+        });
+        source.pipe(dest);
+        // source.on('end', function () { /* copied */ });
+        // source.on('error', function(err) { /* error */ });
       });
   }
 }
