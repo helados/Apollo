@@ -1,6 +1,16 @@
-# MediaDL
+# Apollo
 
-> Download your favorite videos into .mp3 tracks from a client built with web technology
+
+> Download your favorite musics/podcasts into .mp3 tracks from a client built with web technology
+
+<p align="center">
+  <img src="https://cdn.rawgit.com/feross/standard/master/badge.svg">
+</p>
+
+## Requirements
+
+- [Node.js ⩾ 7](https://nodejs.org)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/lang/en/)
 
 #### Build Setup
 
