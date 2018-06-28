@@ -14,27 +14,19 @@ export default class YoutubeService {
   static downloadVideo(link) {
     ytdl(link, { filter: format => format.container === 'mp4' }).pipe(fs.createWriteStream('video.mp4'));
   }
-  static downloadAudio() {
-    const id = 'sDLsSQf3Hc0';
-    const stream = ytdl(id, {
-      quality: 'highestaudio', // filter: 'audioonly',
-    });
-
+  static downloadAudio(link, name) {
+    const stream = ytdl(link, { quality: 'highestaudio', filter: 'audioonly' });
     const path = localStorage.getItem('chosenPath');
-    // const start = Date.now();9**
-    ffmpeg(stream)
-      .audioBitrate(128)
-      .save(`tmp/${id}.mp3`)
+    ffmpeg(stream).audioBitrate(320).save(`tmp/${name}.mp3`)
       .on('progress', (p) => {
         readline.cursorTo(process.stdout, 0);
         process.stdout.write(`${p.targetSize}kb downloaded`);
       })
       .on('end', () => {
-        const source = fs.createReadStream(`tmp/${id}.mp3`);
+        const source = fs.createReadStream(`tmp/${name}.mp3`);
         const dest = fs.createWriteStream(`${path}.mp3`);
-
         source.on('close', () => {
-          fs.unlinkSync(`tmp/${id}.mp3`);
+          fs.unlinkSync(`tmp/${name}.mp3`);
         });
         source.pipe(dest);
         // source.on('end', function () { /* copied */ });

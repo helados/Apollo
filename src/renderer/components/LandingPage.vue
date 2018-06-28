@@ -103,8 +103,8 @@
             throw err;
           }
           if (info) {
-            if (info.title.length > 25) {
-              info.title = info.title.slice(0, 25);
+            if (info.title.length > 30) {
+              info.title = info.title.slice(0, 30);
               info.title += '...';
             }
           }
@@ -113,8 +113,8 @@
         });
       },
       download() {
-        UtilService.selectDirectory();
-        YoutubeService.downloadAudio();
+        UtilService.selectDirectory(this.info.title);
+        YoutubeService.downloadAudio(this.link, this.info.title);
       },
       isLinkValid() {
         if (!this.link) return false;
