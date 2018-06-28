@@ -36,7 +36,6 @@
         <div class="ui one column grid videoInfo" >
           <div class="row">
             <div class="column">
-
              <div class="audio-player">
                  <div class="album-image" :style="{ 'background-image': 'url(' + info.thumbnail_url + ')' }"/>
                  <div id="play-btn"><i class="play icon"></i></div>
@@ -55,6 +54,13 @@
                      <small style="float: right; position: relative; right: 20px;" class="end-time"></small>
                  </div>
                  <div @click="download()" id="action-btn"><i class="download icon"></i></div>
+             </div>
+
+             <div class="download-progress">
+                <div class="ui green progress" id="progress">
+                    <div class="bar"></div>
+                    <div class="label white">5% Converted</div>
+                </div>
              </div>
             </div>
           </div>
@@ -255,6 +261,14 @@ body {
 
 }
 
+.download-progress {
+    margin-top: 0.1em;
+}
+
+.white {
+    color: white !important;
+    margin-top: 0.9em !important;
+}
 
 
 
