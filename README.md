@@ -1,10 +1,10 @@
 # Apollo
 
 
-> Download your favorite musics/podcasts into .mp3 tracks from a client built with web technology
+#### Download your favorite musics/podcasts into .mp3 tracks from a client built with web technology
 
 <p align="center">
-  <img src="https://cdn.rawgit.com/feross/standard/master/badge.svg">
+  <img src="https://camo.githubusercontent.com/546205bd8f3e039eb83c8f7f8a887238d25532d5/68747470733a2f2f7261772e6769746861636b2e636f6d2f746f6d656b77692f6a6176617363726970742f393566626638622f6261646765732f6269672e737667">
 </p>
 
 ## Requirements
@@ -12,7 +12,7 @@
 - [Node.js ⩾ 7](https://nodejs.org)
 - [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/lang/en/)
 
-#### Build Setup
+### Build Setup
 
 ``` bash
 # install dependencies
