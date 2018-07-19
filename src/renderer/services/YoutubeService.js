@@ -11,11 +11,21 @@ export default class YoutubeService {
     return ytdl.getInfo(link, callback);
   }
 
-  static downloadVideo(link) {
-    ytdl(link, { filter: format => format.container === 'mp4' }).pipe(fs.createWriteStream('video.mp4'));
+  static sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
   }
+
   static downloadAudio(link, name) {
-    const stream = ytdl(link, { quality: 'highestaudio', filter: 'audioonly' });
+    const stream = ytdl(link, { quality: 'highestaudio' }).on('response', (res) => {
+      const totalSize = res.headers['content-length'];
+      let dataRead = 0;
+      res.on('data', (data) => {
+        dataRead += data.length;
+        const percent = ((dataRead / totalSize) * 100).toFixed(1);
+        console.log(percent);
+        this.sleep(100);
+      });
+    });
     const path = localStorage.getItem('chosenPath');
     ffmpeg(stream).audioBitrate(320).save(`tmp/${name}.mp3`)
       .on('progress', (p) => {
