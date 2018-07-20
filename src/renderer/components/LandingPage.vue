@@ -57,10 +57,7 @@
              </div>
 
              <div class="download-progress">
-                <div class="ui green progress" id="progress">
-                    <div class="bar"></div>
-                    <div class="label white">5% Converted</div>
-                </div>
+                 <sui-progress state="active" color="green" :percent="percent" :label="label"/>
              </div>
             </div>
           </div>
@@ -88,6 +85,7 @@
 <script>
   import YoutubeService from '../services/YoutubeService';
   import UtilService from '../services/UtilService';
+  import bus from '../bus';
   export default {
     name: 'landing-page',
     data() {
@@ -96,7 +94,16 @@
         info: null,
         loading: false,
         error: false,
+        percent: 0,
       };
+    },
+    created() {
+      bus.$on('percentProgress', this.changePercent);
+    },
+    computed: {
+      label() {
+        return `${this.percent}% Downloaded`;
+      },
     },
     methods: {
       getFile() {
@@ -117,6 +124,9 @@
           this.info = info;
           this.loading = false;
         });
+      },
+      changePercent(value) {
+        this.percent = value;
       },
       download() {
         UtilService.selectDirectory(this.info.title);
@@ -263,6 +273,10 @@ body {
 
 .download-progress {
     margin-top: 0.1em;
+}
+
+.download-progress .label {
+    color:white !important;
 }
 
 .white {
