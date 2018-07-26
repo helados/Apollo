@@ -24,22 +24,24 @@ export default class YoutubeService {
       let dataRead = 0;
       res.on('data', (data) => {
         dataRead += data.length;
-        const percent = (((dataRead / totalSize) * 100) / 2).toFixed(0);
+        const percent = (((dataRead / totalSize) * 99)).toFixed(0);
         bus.$emit('percentProgress', percent);
-        this.sleep(100);
+        this.sleep(50);
       });
     });
     const path = localStorage.getItem('chosenPath');
     ffmpeg(stream).audioBitrate(320).audioCodec('libmp3lame').save(`tmp/${name}.mp3`)
       .on('progress', (p) => {
         readline.cursorTo(process.stdout, 0);
-        process.stdout.write(`${p.targetSize}kb downloaded`);
+        process.stdout.write(`${p.targetSize}kb converted`);
       })
       .on('end', () => {
         const source = fs.createReadStream(`tmp/${name}.mp3`);
         const dest = fs.createWriteStream(`${path}.mp3`);
+        console.log('Finished');
         source.on('close', () => {
           fs.unlinkSync(`tmp/${name}.mp3`);
+          bus.$emit('percentProgress', 100);
         });
         source.pipe(dest);
         // source.on('end', function () { /* copied */ });
