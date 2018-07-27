@@ -6,6 +6,7 @@ const ffmpegPath = require('@ffmpeg-installer/ffmpeg').path;
 const ffmpeg = require('fluent-ffmpeg');
 const readline = require('readline');
 
+const SLEEP_TIME = 400;
 
 ffmpeg.setFfmpegPath(ffmpegPath);
 
@@ -26,7 +27,7 @@ export default class YoutubeService {
         dataRead += data.length;
         const percent = (((dataRead / totalSize) * 99)).toFixed(0);
         bus.$emit('percentProgress', percent);
-        this.sleep(50);
+        this.sleep(SLEEP_TIME);
       });
     });
     const path = localStorage.getItem('chosenPath');
