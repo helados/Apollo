@@ -49,9 +49,10 @@
                      <span id="seekObjContainer">
 			            <progress id="seekObj" value="0" max="1"></progress>
 			         </span>
-                     <br>
-                     <small style="float: left; position: relative; left: 15px;" class="start-time"></small>
-                     <small style="float: right; position: relative; right: 20px;" class="end-time"></small>
+                     <div class="time">
+                         <small class="start-time">0:00</small>
+                         <small class="end-time">{{ info.minutes }}:{{info.seconds}}</small>
+                     </div>
                  </div>
                  <div @click="download()" id="action-btn"><i class="download icon"></i></div>
              </div>
@@ -120,6 +121,8 @@
               info.title = info.title.slice(0, 30);
               info.title += '...';
             }
+            info.minutes = Math.floor(info.length_seconds / 60);
+            info.seconds = (info.length_seconds % 60);
           }
           this.info = info;
           this.loading = false;
@@ -284,6 +287,21 @@ body {
     margin-top: 0.9em !important;
 }
 
+.start-time {
+    float: left;
+    left: 15px;
+}
 
+.end-time {
+    float: right;
+    position: relative;
+    right: 15px;
+}
+
+.time {
+    top: 5px;
+    color: black;
+    position: relative;
+}
 
 </style>
