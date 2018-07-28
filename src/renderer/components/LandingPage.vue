@@ -36,7 +36,7 @@
         <div class="ui one column grid videoInfo" >
           <div class="row">
             <div class="column">
-             <div class="audio-player">
+             <div class="audio-player row">
                  <div class="album-image" :style="{ 'background-image': 'url(' + info.thumbnail_url + ')' }"/>
                  <div id="play-btn"><i class="play icon"></i></div>
                  <div class="audio-wrapper" id="player-container" href="javascript:;">
@@ -56,8 +56,23 @@
                  </div>
                  <div @click="download()" id="action-btn"><i class="download icon"></i></div>
              </div>
+                <div class="row">
 
-             <div class="download-progress">
+                    <div lass="video-cutting-panel">
+                        <input type="checkbox" name="video-cutting" v-model="isVideoCuttingEnabled">
+                        <label>Enable Video cutting</label>
+                        <div v-show="isVideoCuttingEnabled" >
+                            <div class="ui input">
+                                <input type="time" min="0:00">
+                            </div>
+
+                            <div class="ui input">
+                                <input type="time">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             <div class="download-progress row">
                  <sui-progress state="active" color="green" :percent="percent" :label="label"/>
              </div>
             </div>
@@ -96,6 +111,7 @@
         loading: false,
         error: false,
         percent: 0,
+        isVideoCuttingEnabled: false,
       };
     },
     created() {
