@@ -54,21 +54,20 @@
                          <small class="end-time">{{ info.minutes }}:{{info.seconds}}</small>
                      </div>
                  </div>
+
                  <div @click="download()" id="action-btn"><i class="download icon"></i></div>
+                 <div @click="panelMenu()" id="panel-btn">
+                     <i v-show="isPanelEnabled" class="close icon"></i>
+                     <i v-show="!isPanelEnabled" class="bars icon"></i>
+                 </div>
              </div>
-                <div class="row">
-
-                    <div lass="video-cutting-panel">
-                        <input type="checkbox" name="video-cutting" v-model="isVideoCuttingEnabled">
-                        <label>Enable Video cutting</label>
-                        <div v-show="isVideoCuttingEnabled" >
-                            <div class="ui input">
-                                <input type="time" min="0:00">
-                            </div>
-
-                            <div class="ui input">
-                                <input type="time">
-                            </div>
+                <div class="row panel" v-show="isPanelEnabled">
+                    <div class="intervales">
+                        <div class="ui input">
+                            <input type="time" min="0:00">
+                        </div>
+                        <div class="ui input">
+                            <input type="time" max="50:00">
                         </div>
                     </div>
                 </div>
@@ -111,7 +110,7 @@
         loading: false,
         error: false,
         percent: 0,
-        isVideoCuttingEnabled: false,
+        isPanelEnabled: false,
       };
     },
     created() {
@@ -150,6 +149,9 @@
       download() {
         UtilService.selectDirectory(this.info.title);
         YoutubeService.downloadAudio(this.link, this.info.title);
+      },
+      panelMenu() {
+        this.isPanelEnabled = !this.isPanelEnabled;
       },
       isLinkValid() {
         if (!this.link) return false;
@@ -278,6 +280,14 @@ body {
     cursor: pointer;
 }
 
+.audio-player #panel-btn {
+    font-size:1.5em;
+    color:black;
+    margin-right: 3px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
 
 .player-controls .headline {
     color: black;
@@ -318,6 +328,15 @@ body {
     top: 5px;
     color: black;
     position: relative;
+}
+
+.panel {
+    width: 100%;
+    background-color: white;
+}
+
+.panel > .intervales {
+    padding-left: 45% ;
 }
 
 </style>
