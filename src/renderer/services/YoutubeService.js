@@ -19,7 +19,7 @@ export default class YoutubeService {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
-  static downloadAudio(link, name) {
+  static downloadAudio(link) {
     const stream = ytdl(link, { quality: 'highestaudio' }).on('response', (res) => {
       const totalSize = res.headers['content-length'];
       let dataRead = 0;
@@ -31,17 +31,17 @@ export default class YoutubeService {
       });
     });
     const path = localStorage.getItem('chosenPath');
-    ffmpeg(stream).audioBitrate(320).audioCodec('libmp3lame').save(`tmp/${name}.mp3`)
+    ffmpeg(stream).audioBitrate(320).audioCodec('libmp3lame').save('tmp/cache.mp3')
       .on('progress', (p) => {
         readline.cursorTo(process.stdout, 0);
         process.stdout.write(`${p.targetSize}kb converted`);
       })
       .on('end', () => {
-        const source = fs.createReadStream(`tmp/${name}.mp3`);
+        const source = fs.createReadStream('tmp/cache.mp3');
         const dest = fs.createWriteStream(`${path}.mp3`);
         console.log('Finished');
         source.on('close', () => {
-          fs.unlinkSync(`tmp/${name}.mp3`);
+          fs.unlinkSync('tmp/cache.mp3');
           bus.$emit('percentProgress', 100);
         });
         source.pipe(dest);
