@@ -20,9 +20,14 @@ export default class YoutubeService {
   }
 
   static downloadAudio(link) {
-    const stream = ytdl(link, { quality: 'highestaudio' }).on('response', (res) => {
+    const stream = ytdl(link, { quality: 'highestaudio' });
+
+    stream.on('response', (res) => {
       const totalSize = res.headers['content-length'];
       let dataRead = 0;
+      bus.$on('cancelDownload', () => {
+        stream.destroy();
+      });
       res.on('data', (data) => {
         dataRead += data.length;
         const percent = (((dataRead / totalSize) * 99)).toFixed(0);
@@ -39,7 +44,6 @@ export default class YoutubeService {
       .on('end', () => {
         const source = fs.createReadStream('tmp/cache.mp3');
         const dest = fs.createWriteStream(`${path}.mp3`);
-        console.log('Finished');
         source.on('close', () => {
           fs.unlinkSync('tmp/cache.mp3');
           bus.$emit('percentProgress', 100);

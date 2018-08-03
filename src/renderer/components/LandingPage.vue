@@ -52,7 +52,8 @@
                      </div>
                  </div>
 
-                 <div @click="download()" id="action-btn"><i class="download icon"></i></div>
+                 <div v-show="!isDownloading" @click="download()" id="action-btn"><i class="download icon"></i></div>
+                 <div v-show="isDownloading" @click="cancelDownload()" id="action-btn" ><i class="red close icon"></i></div>
                  <div @click="panelMenu()" id="panel-btn">
                      <i v-show="isPanelEnabled" class="close icon"></i>
                      <i v-show="!isPanelEnabled" class="bars icon"></i>
@@ -106,6 +107,7 @@
         info: null,
         loading: false,
         error: false,
+        isDownloading: false,
         percent: 0,
         isPanelEnabled: false,
       };
@@ -146,6 +148,12 @@
       download() {
         UtilService.selectDirectory(this.info.title);
         YoutubeService.downloadAudio(this.link, this.info.title);
+        this.isDownloading = true;
+      },
+      cancelDownload() {
+        bus.$emit('cancelDownload');
+        this.isDownloading = false;
+        this.percent = 0;
       },
       panelMenu() {
         this.isPanelEnabled = !this.isPanelEnabled;
