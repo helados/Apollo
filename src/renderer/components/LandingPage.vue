@@ -6,7 +6,7 @@
 
       <div class="ui middle aligned grid">
         <div class="column logo">
-          <span class="apollon">   <i class="white circular music icon"></i> Helados Apollo</span>
+          <span class="apollo">   <i class="white circular music icon"></i> Helados Apollo</span>
         </div>
       </div>
 
@@ -52,8 +52,13 @@
                      </div>
                  </div>
 
-                 <div v-show="!isDownloading" @click="download()" id="action-btn"><i class="download icon"></i></div>
-                 <div v-show="isDownloading" @click="cancelDownload()" id="action-btn" ><i class="red close icon"></i></div>
+                 <div v-show="!isFinished">
+                    <div v-show="!isDownloading" @click="download()"> <i class="action-btn download icon"></i></div>
+                    <div v-show="isDownloading" @click="cancelDownload()"> <i class="action-btn red close icon"></i></div>
+                 </div>
+                 <div v-show="isFinished">
+                     <i class="action-btn green check icon"></i>
+                 </div>
                  <div @click="panelMenu()" id="panel-btn">
                      <i v-show="isPanelEnabled" class="close icon"></i>
                      <i v-show="!isPanelEnabled" class="bars icon"></i>
@@ -110,6 +115,7 @@
         isDownloading: false,
         percent: 0,
         isPanelEnabled: false,
+        isFinished: false,
       };
     },
     created() {
@@ -122,6 +128,7 @@
     },
     methods: {
       getFile() {
+        this.reset();
         this.info = null;
         this.loading = true;
         YoutubeService.getInformations(this.link, (err, info) => {
@@ -144,6 +151,8 @@
       },
       changePercent(value) {
         this.percent = value;
+        // eslint-disable-next-line
+        Number(this.percent) > 99 ? this.isFinished = true : this.isFinished = false;
       },
       download() {
         UtilService.selectDirectory(this.info.title);
@@ -166,6 +175,16 @@
         const expression = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
         const urlRegex = new RegExp(expression);
         return this.link.match(urlRegex);
+      },
+      reset() {
+        if (this.isDownloading) {
+          this.cancelDownload();
+          this.error = false;
+          this.isDownloading = false;
+          this.percent = 0;
+          this.isPanelEnabled = false;
+          this.isFinished = false;
+        }
       },
     },
   };
@@ -204,7 +223,7 @@ body {
     user-select: none;
   }
 
-  .apollon {
+  .apollo {
     font-size: 1.4em;
     font-weight:bold;
   }
@@ -279,7 +298,7 @@ body {
     margin: 3.4rem 0 2rem 2.3rem;
 }
 
-.audio-player #action-btn {
+.audio-player .action-btn {
     font-size:3em;
     color:black;
     margin-right: 30px;
