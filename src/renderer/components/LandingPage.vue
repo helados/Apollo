@@ -152,8 +152,10 @@
       },
       cancelDownload() {
         bus.$emit('cancelDownload');
-        this.isDownloading = false;
-        this.percent = 0;
+        bus.$on('answer', () => {
+          this.isDownloading = false;
+          this.percent = 0;
+        });
       },
       panelMenu() {
         this.isPanelEnabled = !this.isPanelEnabled;

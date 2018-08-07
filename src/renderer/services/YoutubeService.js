@@ -26,6 +26,7 @@ export default class YoutubeService {
       const totalSize = res.headers['content-length'];
       let dataRead = 0;
       bus.$on('cancelDownload', () => {
+        bus.$emit('answer', true);
         stream.destroy();
       });
       res.on('data', (data) => {
@@ -37,9 +38,12 @@ export default class YoutubeService {
     });
     const path = localStorage.getItem('chosenPath');
     ffmpeg(stream).audioBitrate(320).audioCodec('libmp3lame').save('tmp/cache.mp3')
-      .on('progress', (p) => {
+      .on('progress', () => {
         readline.cursorTo(process.stdout, 0);
-        process.stdout.write(`${p.targetSize}kb converted`);
+        bus.$on('cancelDownload', () => {
+          bus.$emit('answer', true);
+          stream.destroy();
+        });
       })
       .on('end', () => {
         const source = fs.createReadStream('tmp/cache.mp3');
