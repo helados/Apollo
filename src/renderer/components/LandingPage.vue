@@ -29,7 +29,7 @@
         </div>
       </div>
 
-      <div style="margin: 100px" v-if="info">
+      <div class="player" v-if="info">
         <div class="ui one column grid videoInfo" >
           <div class="row">
             <div class="column">
@@ -81,14 +81,7 @@
           </div>
         </div>
 
-        <div class="ui three column grid videoInfo" v-if="error">
-            <div class="row">
-                <div class="column"></div>
-                <div class="column">
-                    <p><i class="red exclamation circle icon"></i> Error when getting Youtube video</p>
-                </div>
-            </div>
-        </div>
+
       </div>
 
         <div class="ui inverted vertical footer segment form-page">
@@ -248,6 +241,10 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+.player {
+    margin: 100px 100px 0;
 }
 
 

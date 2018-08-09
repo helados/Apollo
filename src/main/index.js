@@ -21,6 +21,8 @@ function createWindow() {
     height: 563,
     useContentSize: true,
     width: 1000,
+    minHeight: 600,
+    minWidth: 800,
   });
 
   mainWindow.loadURL(winURL);
