@@ -6,7 +6,7 @@
 
 <script>
   export default {
-    name: 'youtube-dl',
+    name: 'apollo',
   };
 </script>
 
