@@ -6,6 +6,7 @@ const ffmpegPath = require('@ffmpeg-installer/ffmpeg').path;
 const ffmpeg = require('fluent-ffmpeg');
 const readline = require('readline');
 
+
 const SLEEP_TIME = 400;
 
 ffmpeg.setFfmpegPath(ffmpegPath);
@@ -56,5 +57,28 @@ export default class YoutubeService {
         // source.on('end', function () { /* copied */ });
         // source.on('error', function(err) { /* error */ });
       });
+  }
+
+
+  static makePlayer(id) {
+    /* eslint-disable */
+      if (this.player === undefined) {
+        this.player = new YT.Player('player', {
+            height: '0',
+            width: '0',
+            videoId: id
+        });
+      } else {
+        this.player.loadVideoById(id);
+      }
+
+  }
+
+  static playPlayer() {
+    this.player.playVideo();
+  }
+
+  static pausePlayer() {
+    this.player.pauseVideo();
   }
 }

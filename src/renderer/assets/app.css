@@ -103,7 +103,7 @@ body {
 .audio-player .player-controls p {
     font-size: 1.6rem;
 }
-.audio-player #play-btn {
+.audio-player .action-btn {
     font-size:3em;
     color:black;
     margin: 3.4rem 0 2rem 2.3rem;
@@ -174,4 +174,8 @@ body {
 
 .panel > .intervales {
     padding-left: 45% ;
+}
+
+#player {
+    display: none;
 }

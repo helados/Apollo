@@ -1,18 +1,18 @@
 <template>
   <div id="wrapper">
     <main>
-
       <div style="margin-top:2vh"></div>
-
       <div class="ui middle aligned grid">
         <div class="column logo">
-          <span class="apollo">   <i class="white circular music icon"></i> Helados Apollo</span>
+          <span class="apollo"> <i class="white circular music icon"></i> Helados Apollo</span>
         </div>
       </div>
 
       <div style="margin-bottom:6vh"></div>
 
+
       <div style="margin: 100px">
+        <div id="player"></div>
         <div class="ui one column grid">
           <div class="row">
             <div class="column">
@@ -35,12 +35,8 @@
             <div class="column">
              <div class="audio-player row">
                  <div class="album-image" :style="{ 'background-image': 'url(' + info.thumbnail_url + ')' }"/>
-                 <div id="play-btn"><i class="play icon"></i></div>
-                 <div class="audio-wrapper" id="player-container" href="javascript:;">
-                     <audio id="player" ontimeupdate="initProgressBar()">
-                         <source src="http://www.lukeduncan.me/oslo.mp3" type="audio/mp3">
-                     </audio>
-                 </div>
+                 <div v-show="!isPlaying" @click="play()"><i class="action-btn play icon"></i></div>
+                 <div v-show="isPlaying" @click="pause()"><i class="action-btn pause icon"></i></div>
                  <div class="player-controls scrubber">
                      <span class="headline">{{info.title}} - {{info.author.name}}</span>
                      <span id="seekObjContainer">
@@ -63,6 +59,7 @@
                      <i v-show="isPanelEnabled" class="close icon"></i>
                      <i v-show="!isPanelEnabled" class="bars icon"></i>
                  </div>
+
              </div>
                 <div class="row panel" v-show="isPanelEnabled">
                     <div class="intervales">
@@ -77,27 +74,30 @@
              <div class="download-progress row">
                  <sui-progress state="active" color="green" :percent="percent" :label="label"/>
              </div>
+
             </div>
           </div>
         </div>
-
-
       </div>
-
-        <div class="ui inverted vertical footer segment form-page">
-            <div class="ui container">
-                <p align="center">A Helados Project. &nbsp; Made with <i class="red heart icon"></i>by the team</p>
-            </div>
-        </div>
+      <div class="ui inverted vertical footer segment form-page">
+          <div class="ui container">
+              <p align="center">A Helados Project. &nbsp; Made with <i class="red heart icon"></i>by the team</p>
+          </div>
+      </div>
     </main>
   </div>
 </template>
 
-<script src="https://www.youtube.com/iframe_api"></script>
 <script>
   import YoutubeService from '../services/YoutubeService';
   import UtilService from '../services/UtilService';
   import bus from '../bus';
+
+  const tag = document.createElement('script');
+  tag.src = 'https://www.youtube.com/iframe_api';
+  const firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
   export default {
     name: 'landing-page',
     data() {
@@ -110,6 +110,7 @@
         percent: 0,
         isPanelEnabled: false,
         isFinished: false,
+        isPlaying: false,
       };
     },
     created() {
@@ -141,7 +142,16 @@
           }
           this.info = info;
           this.loading = false;
+          YoutubeService.makePlayer(this.info.video_id);
         });
+      },
+      play() {
+        YoutubeService.playPlayer();
+        this.isPlaying = true;
+      },
+      pause() {
+        YoutubeService.pausePlayer();
+        this.isPlaying = false;
       },
       changePercent(value) {
         this.percent = value;
@@ -171,6 +181,9 @@
         return this.link.match(urlRegex);
       },
       reset() {
+        if (this.isPlaying) {
+          this.pause();
+        }
         if (this.isDownloading) {
           this.cancelDownload();
           this.error = false;
