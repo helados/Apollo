@@ -43,7 +43,7 @@
 			            <progress id="seekObj" value="0" max="1"></progress>
 			         </span>
                      <div class="time">
-                         <small class="start-time">0:00</small>
+                         <small class="start-time">{{time}}</small>
                          <small class="end-time">{{ info.minutes }}:{{info.seconds}}</small>
                      </div>
                  </div>
@@ -108,6 +108,7 @@
         error: false,
         isDownloading: false,
         percent: 0,
+        time: '00:00',
         isPanelEnabled: false,
         isFinished: false,
         isPlaying: false,
@@ -115,6 +116,7 @@
     },
     created() {
       bus.$on('percentProgress', this.changePercent);
+      bus.$on('playerProgress', this.changeTime);
     },
     computed: {
       label() {
@@ -152,6 +154,9 @@
       pause() {
         YoutubeService.pausePlayer();
         this.isPlaying = false;
+      },
+      changeTime(value) {
+        this.time = UtilService.toTime(value);
       },
       changePercent(value) {
         this.percent = value;

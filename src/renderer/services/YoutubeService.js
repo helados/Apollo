@@ -6,7 +6,7 @@ const ffmpegPath = require('@ffmpeg-installer/ffmpeg').path;
 const ffmpeg = require('fluent-ffmpeg');
 const readline = require('readline');
 
-
+let INTERVAL_ID = 0;
 const SLEEP_TIME = 400;
 
 ffmpeg.setFfmpegPath(ffmpegPath);
@@ -79,18 +79,23 @@ export default class YoutubeService {
       function onPlayerReady (event) {
         event.target.stopVideo();
       }
-
   }
 
   static playPlayer() {
     this.player.playVideo();
+    INTERVAL_ID = setInterval( () => {
+      bus.$emit('playerProgress', Math.floor(this.player.getCurrentTime()));
+    }, 1000);
+
   }
 
   static pausePlayer() {
     this.player.pauseVideo();
+    clearInterval(INTERVAL_ID);
   }
 
   static stopPlayer() {
     this.player.stopVideo();
+    clearInterval(INTERVAL_ID);
   }
 }
