@@ -66,10 +66,18 @@ export default class YoutubeService {
         this.player = new YT.Player('player', {
             height: '0',
             width: '0',
-            videoId: id
+            videoId: id,
+            events: {
+                'onReady': onPlayerReady
+            }
         });
       } else {
         this.player.loadVideoById(id);
+        this.stopPlayer();
+      }
+
+      function onPlayerReady (event) {
+        event.target.stopVideo();
       }
 
   }
@@ -80,5 +88,9 @@ export default class YoutubeService {
 
   static pausePlayer() {
     this.player.pauseVideo();
+  }
+
+  static stopPlayer() {
+    this.player.stopVideo();
   }
 }
