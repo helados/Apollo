@@ -51,10 +51,9 @@ body {
 .noselect {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
-    -khtml-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    user-select: none;
+     user-select: none;
 }
 
 .player {
@@ -83,22 +82,22 @@ body {
 }
 .audio-player .player-controls progress {
     width: 90%;
+    background-color: blue;
 }
 .audio-player .player-controls progress[value] {
     -webkit-appearance: none;
-    appearance: none;
     background-color: white;
-    color: blue;
-    height: 5px;
+    height: 4px;
 }
 .audio-player .player-controls progress[value]::-webkit-progress-bar {
     background-color: white;
-    border-radius: 2px;
+    border-radius: 4px;
+    height: 10px;
     border: 1px solid #dfdfdf;
     color: blue;
 }
 .audio-player .player-controls progress::-webkit-progress-value {
-    background-color: blue;
+    background-color: #3ca877;
 }
 .audio-player .player-controls p {
     font-size: 1.6rem;

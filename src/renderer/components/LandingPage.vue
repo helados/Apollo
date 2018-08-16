@@ -40,7 +40,7 @@
                  <div class="player-controls scrubber">
                      <span class="headline">{{info.title}} - {{info.author.name}}</span>
                      <span id="seekObjContainer">
-			            <progress id="seekObj" value="0" max="1"></progress>
+			            <progress id="progress-bar" :value="player_percent" max="1"></progress>
 			         </span>
                      <div class="time">
                          <small class="start-time">{{time}}</small>
@@ -108,6 +108,7 @@
         error: false,
         isDownloading: false,
         percent: 0,
+        player_percent: 0,
         time: '00:00',
         isPanelEnabled: false,
         isFinished: false,
@@ -157,6 +158,7 @@
       },
       changeTime(value) {
         this.time = UtilService.toTime(value);
+        this.player_percent = value / this.info.length_seconds;
       },
       changePercent(value) {
         this.percent = value;
