@@ -43,8 +43,8 @@
 			            <progress id="progress-bar" :value="player_percent" max="1"></progress>
 			         </span>
                      <div class="time">
-                         <small class="start-time">{{time}}</small>
-                         <small class="end-time">{{ info.minutes }}:{{info.seconds}}</small>
+                         <small class="start-time">{{ time }}</small>
+                         <small class="end-time">{{ info.time }}</small>
                      </div>
                  </div>
 
@@ -140,8 +140,7 @@
               info.title = info.title.slice(0, 30);
               info.title += '...';
             }
-            info.minutes = Math.floor(info.length_seconds / 60);
-            info.seconds = (info.length_seconds % 60);
+            info.time = UtilService.toTime(info.length_seconds);
           }
           this.info = info;
           this.loading = false;
