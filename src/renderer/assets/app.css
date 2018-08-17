@@ -178,3 +178,17 @@ body {
 #player {
     display: none;
 }
+
+
+#firstCut {
+    margin-left: 20%;
+}
+
+#lastCut {
+    margin-left: 4em;
+}
+
+#selectQuality {
+   float:right;
+   margin-right: 4.5em;
+}

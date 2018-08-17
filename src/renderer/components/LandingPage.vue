@@ -62,14 +62,25 @@
 
              </div>
                 <div class="row panel" v-show="isPanelEnabled">
-                    <div class="intervales">
-                        <div class="ui input">
-                            <input type="time" min="0:00">
-                        </div>
-                        <div class="ui input">
-                            <input type="time" max="50:00">
-                        </div>
-                    </div>
+                   <div id="firstCut" class="ui input">
+
+                       <input type="time" min="00:00" value="00:00">
+                   </div>
+                   <div id="lastCut" class="ui input">
+                       <input type="time" max="50:00">
+                   </div>
+
+                    <button class="ui green button">
+                        <i class="check icon"></i>
+                    </button>
+
+                   <select id="selectQuality" class="ui search dropdown" name="quality">
+                       <option disabled value="">Audio quality (256kb/s)</option>
+                       <option value="1">128kb/s</option>
+                       <option value="2">256kb/s</option>
+                       <option value="3">320kb/s</option>
+                   </select>
+
                 </div>
              <div class="download-progress row">
                  <sui-progress state="active" color="green" :percent="percent" :label="label"/>
