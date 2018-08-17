@@ -198,6 +198,8 @@
         return this.link.match(urlRegex);
       },
       reset() {
+        this.time = '00:00';
+        this.player_percent = 0;
         if (this.isPlaying) {
           this.pause();
         }
