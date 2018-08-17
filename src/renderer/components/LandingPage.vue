@@ -63,9 +63,9 @@
              </div>
                 <div class="row panel" v-show="isPanelEnabled">
                    <div id="firstCut" class="ui input">
-
-                       <input type="time" min="00:00" value="00:00">
+                       <input type="text" v-model="first_time" placeholder="00:00" @change="validateFirstTime">
                    </div>
+
                    <div id="lastCut" class="ui input">
                        <input type="time" max="50:00">
                    </div>
@@ -121,6 +121,7 @@
         percent: 0,
         player_percent: 0,
         time: '00:00',
+        first_time: '00:00',
         isPanelEnabled: false,
         isFinished: false,
         isPlaying: false,
@@ -196,6 +197,10 @@
         const expression = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
         const urlRegex = new RegExp(expression);
         return this.link.match(urlRegex);
+      },
+      validateFirstTime() {
+        const isMatching = /[0-9]{2,}?:[0-5][0-9]/.test(this.first_time);
+        console.log(isMatching);
       },
       reset() {
         this.time = '00:00';
