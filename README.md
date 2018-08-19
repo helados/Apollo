@@ -15,8 +15,10 @@
 - Get informations on a YouTube link given
 - Play a YouTube video in an audio player
 - Download a YouTube video into an .mp3 file
+  - bonus: cropping available
 - Download progression bar
 - Audio quality selector
+
 
 ## Technology
 - Electron
