@@ -15,8 +15,8 @@
 - Get informations on a YouTube link given
 - Play a YouTube video in an audio player
 - Download a YouTube video into an .mp3 file
-  - bonus: cropping available
-- Download progression bar
+  - Cropping available
+- Download progress bar
 - Audio quality selector
 
 
