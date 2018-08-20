@@ -185,7 +185,7 @@ body {
 }
 
 #lastCut {
-    margin-left: 2em;
+    margin-left: 1.5em;
 }
 
 #selectQuality {
@@ -202,12 +202,12 @@ body {
 }
 
 #crop {
-    margin-left: 2%;
+    margin-left: 1%;
     font-size: 17px;
 }
 
 #from {
-   margin-left: 5%;
+   margin-left: 3%;
 }
 
 #to {
@@ -215,6 +215,10 @@ body {
 }
 
 #quality {
-    margin-left: 7%;
+    margin-left: 6%;
     font-size: 17px;
+}
+
+.panel-input {
+    background-color: #dedede !important;
 }
