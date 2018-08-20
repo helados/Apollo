@@ -181,14 +181,40 @@ body {
 
 
 #firstCut {
-    margin-left: 20%;
+    margin-left: 1em;
 }
 
 #lastCut {
-    margin-left: 4em;
+    margin-left: 2em;
 }
 
 #selectQuality {
    float:right;
-   margin-right: 4.5em;
+}
+
+.panel {
+    background-color: #bfbfbf;
+}
+
+.panel-section {
+    color: #464646;
+    font-weight: bold;
+}
+
+#crop {
+    margin-left: 2%;
+    font-size: 17px;
+}
+
+#from {
+   margin-left: 5%;
+}
+
+#to {
+    margin-left: 2%;
+}
+
+#quality {
+    margin-left: 7%;
+    font-size: 17px;
 }
