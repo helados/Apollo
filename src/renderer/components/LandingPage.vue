@@ -61,24 +61,29 @@
                  </div>
 
              </div>
-                <div class="row panel" v-show="isPanelEnabled">
+                <div class="row panel panel" v-show="isPanelEnabled">
+                   <span class="panel-section" id="crop"> CROPPING SECTION </span>
+                   <span class="panel-section" id="from"> FROM </span>
                    <div id="firstCut" class="ui input">
-                       <input type="text" v-model="first_time" placeholder="00:00" @change="validateFirstTime">
+                       <input type="text" v-model="firstTime" placeholder="00:00" @change="validateFirstTime">
                    </div>
 
-                   <div id="lastCut" class="ui input">
-                       <input type="time" max="50:00">
-                   </div>
+                    <span class="panel-section" id="to"> TO </span>
+
+                    <div id="lastCut" class="ui input">
+                        <input type="text"  placeholder="00:00" @change="validateFirstTime">
+                    </div>
 
                     <button class="ui green button">
                         <i class="check icon"></i>
                     </button>
 
+                    <span class="panel-section" id="quality"> AUDIO QUALITY </span>
                    <select id="selectQuality" class="ui search dropdown" name="quality">
-                       <option disabled value="">Audio quality (256kb/s)</option>
-                       <option value="1">128kb/s</option>
-                       <option value="2">256kb/s</option>
-                       <option value="3">320kb/s</option>
+                       <option selected disabled value="">Audio quality (256kb/s)</option>
+                       <option value="128">128kb/s (Medium)</option>
+                       <option value="256">256kb/s (High)</option>
+                       <option value="320">320kb/s (Very High)</option>
                    </select>
 
                 </div>
@@ -117,11 +122,12 @@
         info: null,
         loading: false,
         error: false,
+        audioQuality: '256',
         isDownloading: false,
         percent: 0,
         player_percent: 0,
         time: '00:00',
-        first_time: '00:00',
+        firstTime: '00:00',
         isPanelEnabled: false,
         isFinished: false,
         isPlaying: false,
@@ -199,7 +205,7 @@
         return this.link.match(urlRegex);
       },
       validateFirstTime() {
-        const isMatching = /[0-9]{2,}?:[0-5][0-9]/.test(this.first_time);
+        const isMatching = /[0-9]{2,}?:[0-5][0-9]/.test(this.firstTime);
         console.log(isMatching);
       },
       reset() {
