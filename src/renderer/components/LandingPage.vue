@@ -92,7 +92,7 @@
       </div>
       <div class="ui inverted vertical footer segment form-page">
           <div class="ui container">
-              <p align="center">A Helados Project. &nbsp; Made with <i class="red heart icon"></i>by the team</p>
+              <p align="center">An Helados Project. &nbsp; Made with <i class="red heart icon"></i>by the team</p>
           </div>
       </div>
     </main>
