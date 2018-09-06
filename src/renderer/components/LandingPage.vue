@@ -71,7 +71,8 @@
                    <span class="panel-section" id="to"> TO </span>
 
                    <div id="lastCut" class="ui input">
-                       <input class='panel-input' type="text"  placeholder="00:00" @change="validateFirstTime">
+                       <input class='panel-input' type="text" v-model="endTime" placeholder="00:00" @change="validateFirstTime">
+
                        <button class="ui green labeled icon button">
                            Validate &nbsp; <i class="check icon"></i>
                        </button>
@@ -125,6 +126,7 @@
         player_percent: 0,
         time: '00:00',
         firstTime: '00:00',
+        endTime: '00:00',
         isPanelEnabled: false,
         isFinished: false,
         isPlaying: false,
@@ -203,7 +205,8 @@
       },
       validateFirstTime() {
         const isMatching = /[0-9]{2,}?:[0-5][0-9]/.test(this.firstTime);
-        console.log(isMatching);
+        if (!isMatching) {
+        }
       },
       reset() {
         this.time = '00:00';
