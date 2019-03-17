@@ -1,7 +1,7 @@
 {
-  "name": "media-dl",
-  "version": "0.0.0",
-  "author": "Hugo Torzuoli <torzuoli.hugo@gmail.com>",
+  "name": "Apollo",
+  "version": "1.0.0",
+  "author": "Xavier Chopin <bonjour@xavierchop.in>, Guillaume Bertrand, Hugo Torzuoli <torzuoli.hugo@gmail.com>",
   "description": "Download mp3 files from YouTube and Soundcloud through a client built with web technology",
   "license": null,
   "main": "./dist/electron/main.js",
@@ -23,7 +23,7 @@
   },
   "build": {
     "productName": "media-dl",
-    "appId": "org.simulatedgreg.electron-vue",
+    "appId": "org.heldos.apollo",
     "directories": {
       "output": "build"
     },
@@ -67,6 +67,7 @@
     "vue-electron": "^1.0.6",
     "vue-router": "^2.5.3",
     "vuex": "^2.3.1",
+    "css-loader": "^0.28.4",
     "ytdl-core": "^0.20.4"
   },
   "devDependencies": {
@@ -81,7 +82,6 @@
     "chalk": "^2.1.0",
     "copy-webpack-plugin": "^4.0.1",
     "cross-env": "^5.0.5",
-    "css-loader": "^0.28.4",
     "del": "^3.0.0",
     "devtron": "^1.4.0",
     "electron": "^1.7.5",
