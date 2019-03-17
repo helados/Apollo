@@ -2,8 +2,8 @@
   "name": "Apollo",
   "version": "1.0.0",
   "author": "Xavier Chopin <bonjour@xavierchop.in>, Guillaume Bertrand, Hugo Torzuoli <torzuoli.hugo@gmail.com>",
-  "description": "Download mp3 files from YouTube and Soundcloud through a client built with web technology",
-  "license": null,
+  "description": "Download mp3 files from YouTube through a client built with web technology",
+  "license": "Apache-2.0",
   "main": "./dist/electron/main.js",
   "scripts": {
     "build": "node .electron-vue/build.js && electron-builder",
@@ -22,7 +22,7 @@
     "postinstall": "npm run lint:fix"
   },
   "build": {
-    "productName": "media-dl",
+    "productName": "Helados Apollo",
     "appId": "org.heldos.apollo",
     "directories": {
       "output": "build"
