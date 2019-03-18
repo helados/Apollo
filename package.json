@@ -6,7 +6,9 @@
   "license": "Apache-2.0",
   "main": "./dist/electron/main.js",
   "scripts": {
-    "build": "node .electron-vue/build.js && electron-builder",
+    "build:mac": "node .electron-vue/build.js && electron-builder",
+    "build:windows": "node .electron-vue/build.js && electron-builder --win --x64",
+    "build:linux": "node .electron-vue/build.js && electron-builder --linux deb",
     "build:dir": "node .electron-vue/build.js && electron-builder --dir",
     "build:clean": "cross-env BUILD_TARGET=clean node .electron-vue/build.js",
     "build:web": "cross-env BUILD_TARGET=web node .electron-vue/build.js",
@@ -58,6 +60,7 @@
   "dependencies": {
     "@ffmpeg-installer/ffmpeg": "^1.0.15",
     "axios": "^0.16.1",
+    "css-loader": "^0.28.4",
     "fluent-ffmpeg": "^2.1.2",
     "moment": "^2.22.2",
     "semantic-ui-css": "^2.3.0",
@@ -67,7 +70,6 @@
     "vue-electron": "^1.0.6",
     "vue-router": "^2.5.3",
     "vuex": "^2.3.1",
-    "css-loader": "^0.28.4",
     "ytdl-core": "^0.20.4"
   },
   "devDependencies": {
