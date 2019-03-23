@@ -9,6 +9,7 @@
     "build:mac": "node .electron-vue/build.js && electron-builder",
     "build:windows": "node .electron-vue/build.js && electron-builder --win --x64",
     "build:linux": "node .electron-vue/build.js && electron-builder --linux deb",
+    "build:help": "node .electron-vue/build.js && electron-builder --help",
     "build:dir": "node .electron-vue/build.js && electron-builder --dir",
     "build:clean": "cross-env BUILD_TARGET=clean node .electron-vue/build.js",
     "build:web": "cross-env BUILD_TARGET=web node .electron-vue/build.js",
@@ -54,7 +55,14 @@
       "icon": "build/icons/icon.ico"
     },
     "linux": {
-      "icon": "build/icons"
+      "target" : "deb"
+    },
+    "deb" : {
+      "depends" : [
+        "gconf2",
+        "gconf-service",
+        "libappindicator1"
+      ]
     }
   },
   "dependencies": {
