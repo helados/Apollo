@@ -7,7 +7,7 @@ const ffmpeg = require('fluent-ffmpeg');
 const readline = require('readline');
 
 let INTERVAL_ID = 0;
-const SLEEP_TIME = 250;
+const SLEEP_TIME = 400;
 
 ffmpeg.setFfmpegPath(ffmpegPath);
 
@@ -38,7 +38,7 @@ export default class YoutubeService {
       });
     });
     const path = localStorage.getItem('chosenPath');
-    ffmpeg(stream).audioBitrate(256).audioCodec('libmp3lame').save('tmp/cache.mp3')
+    ffmpeg(stream).audioBitrate(256).audioCodec('libmp3lame').save(`${path}.mp3`)
       .on('progress', () => {
         readline.cursorTo(process.stdout, 0);
         bus.$on('cancelDownload', () => {
@@ -47,10 +47,10 @@ export default class YoutubeService {
         });
       })
       .on('end', () => {
-        const source = fs.createReadStream('tmp/cache.mp3');
-        const dest = fs.createWriteStream(`${path}.mp3`);
+        const source = fs.createReadStream(`${path}.mp3`);
+        const dest = fs.createWriteStream(`${path}`);
         source.on('close', () => {
-          fs.unlinkSync('tmp/cache.mp3');
+          fs.unlinkSync(`${path}.mp3`);
           bus.$emit('percentProgress', 100);
         });
         source.pipe(dest);
