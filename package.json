@@ -66,9 +66,9 @@
     }
   },
   "dependencies": {
-    "@ffmpeg-installer/ffmpeg": "^1.0.15",
     "axios": "^0.16.1",
     "css-loader": "^0.28.4",
+    "ffmpeg-binaries": "3.2.2-3",
     "fluent-ffmpeg": "^2.1.2",
     "moment": "^2.22.2",
     "semantic-ui-css": "^2.3.0",

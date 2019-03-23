@@ -2,14 +2,13 @@ import bus from '../bus';
 
 const ytdl = require('ytdl-core');
 const fs = require('fs');
-const ffmpegPath = require('@ffmpeg-installer/ffmpeg').path;
+const binaries = require('ffmpeg-binaries');
 const ffmpeg = require('fluent-ffmpeg');
 const readline = require('readline');
 
 let INTERVAL_ID = 0;
 const SLEEP_TIME = 400;
 
-ffmpeg.setFfmpegPath(ffmpegPath);
 
 export default class YoutubeService {
   static getInformations(link, callback) {
@@ -38,7 +37,11 @@ export default class YoutubeService {
       });
     });
     const path = localStorage.getItem('chosenPath');
-    ffmpeg(stream).audioBitrate(256).audioCodec('libmp3lame').save(`${path}.mp3`)
+    ffmpeg(stream)
+      .setFfmpegPath(binaries.ffmpegPath())
+      .format('mp3')
+      .audioBitrate(256)
+      .save(`${path}.mp3`)
       .on('progress', () => {
         readline.cursorTo(process.stdout, 0);
         bus.$on('cancelDownload', () => {
