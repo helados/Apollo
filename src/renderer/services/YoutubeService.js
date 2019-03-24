@@ -2,8 +2,8 @@ import bus from '../bus';
 
 const ytdl = require('ytdl-core');
 const fs = require('fs');
-const binaries = require('ffmpeg-binaries');
 const ffmpeg = require('fluent-ffmpeg');
+const binaries = require('ffmpeg-binaries');
 const readline = require('readline');
 
 let INTERVAL_ID = 0;
@@ -36,12 +36,12 @@ export default class YoutubeService {
         this.sleep(SLEEP_TIME);
       });
     });
-    const path = localStorage.getItem('chosenPath');
+    const savedPath = localStorage.getItem('chosenPath');
     ffmpeg(stream)
       .setFfmpegPath(binaries.ffmpegPath())
       .format('mp3')
       .audioBitrate(256)
-      .save(`${path}.mp3`)
+      .save(`${savedPath}.mp3`)
       .on('progress', () => {
         readline.cursorTo(process.stdout, 0);
         bus.$on('cancelDownload', () => {
@@ -50,10 +50,10 @@ export default class YoutubeService {
         });
       })
       .on('end', () => {
-        const source = fs.createReadStream(`${path}.mp3`);
-        const dest = fs.createWriteStream(`${path}`);
+        const source = fs.createReadStream(`${savedPath}.mp3`);
+        const dest = fs.createWriteStream(`${savedPath}`);
         source.on('close', () => {
-          fs.unlinkSync(`${path}.mp3`);
+          fs.unlinkSync(`${savedPath}.mp3`);
           bus.$emit('percentProgress', 100);
         });
         source.pipe(dest);

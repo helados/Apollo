@@ -38,7 +38,6 @@
           </div>
         </div>
       </div>
-
       <div class="player" v-if="info">
         <div class="ui one column grid videoInfo">
           <div class="row">
@@ -76,47 +75,6 @@
                 <div v-show="isFinished">
                   <i class="action-btn green check icon"></i>
                 </div>
-                <div @click="panelMenu()" id="panel-btn">
-                  <i v-show="isPanelEnabled" class="close icon"></i>
-                  <i v-show="!isPanelEnabled" class="bars icon"></i>
-                </div>
-              </div>
-              <div class="row panel panel" v-show="isPanelEnabled">
-                <span class="panel-section" id="crop">CROPPING SECTION</span>
-                <span class="panel-section" id="from">FROM</span>
-                <div id="firstCut" class="ui input">
-                  <input
-                    class="panel-input"
-                    type="text"
-                    v-model="firstTime"
-                    placeholder="00:00"
-                    @change="validateFirstTime"
-                  >
-                </div>
-
-                <span class="panel-section" id="to">TO</span>
-
-                <div id="lastCut" class="ui input">
-                  <input
-                    class="panel-input"
-                    type="text"
-                    v-model="endTime"
-                    placeholder="00:00"
-                    @change="validateFirstTime"
-                  >
-                  
-                  <button class="ui green labeled icon button">
-                    Validate &nbsp;
-                    <i class="check icon"></i>
-                  </button>
-                </div>
-
-                <span class="panel-section" id="quality">AUDIO QUALITY</span>
-                <select id="selectQuality" class="ui search dropdown panel-input" name="quality">
-                  <option class="panel-input" value="128">128kb/s (Medium)</option>
-                  <option class="panel-input" selected value="256">256kb/s (High)</option>
-                  <option class="panel-input" value="320">320kb/s (Very High)</option>
-                </select>
               </div>
               <div class="download-progress row">
                 <sui-progress state="active" color="green" :percent="percent" :label="label"/>
