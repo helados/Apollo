@@ -27,6 +27,7 @@
   "build": {
     "productName": "Helados Apollo",
     "appId": "org.heldos.apollo",
+    "asar": false,
     "directories": {
       "output": "build"
     },
