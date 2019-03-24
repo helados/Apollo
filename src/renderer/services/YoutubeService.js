@@ -3,7 +3,7 @@ import bus from '../bus';
 const ytdl = require('ytdl-core');
 const fs = require('fs');
 const ffmpeg = require('fluent-ffmpeg');
-const binaries = require('ffmpeg-binaries');
+const ffmpegPath = require('@ffmpeg-installer/ffmpeg').path;
 const readline = require('readline');
 
 let INTERVAL_ID = 0;
@@ -38,7 +38,7 @@ export default class YoutubeService {
     });
     const savedPath = localStorage.getItem('chosenPath');
     ffmpeg(stream)
-      .setFfmpegPath(binaries.ffmpegPath())
+      .setFfmpegPath(ffmpegPath)
       .format('mp3')
       .audioBitrate(256)
       .save(`${savedPath}.mp3`)
