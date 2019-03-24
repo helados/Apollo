@@ -15,9 +15,11 @@
 - Get informations on a YouTube link given
 - Play a YouTube video in an audio player
 - Download a YouTube video into an .mp3 file
-  - Cropping available
 - Download progress bar
-- Audio quality selector
+
+## Download
+- [Windows](https://github.com/helados/Apollo/releases/download/v1.0.0/Helados.Apollo.Setup.1.0.0.exe)
+- [macOS](https://github.com/helados/Apollo/releases/download/v1.0.0/Helados.Apollo-1.0.0.dmg)
 
 
 ## Technology
@@ -42,14 +44,10 @@ npm install
 npm run dev
 
 # build electron application for production
-npm run build
+npm run build:mac
+npm run build:windows
+npm run build:linux
 
-# run unit & end-to-end tests
-npm test
-
-
-# lint all JS/Vue component files in `src/`
-npm run lint
 
 ```
 
