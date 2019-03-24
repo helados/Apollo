@@ -56,10 +56,10 @@
       "icon": "build/icons/icon.ico"
     },
     "linux": {
-      "target" : "deb"
+      "target": "deb"
     },
-    "deb" : {
-      "depends" : [
+    "deb": {
+      "depends": [
         "ffmeg",
         "gconf2",
         "gconf-service",
@@ -70,7 +70,7 @@
   "dependencies": {
     "axios": "^0.16.1",
     "css-loader": "^0.28.4",
-    "ffmpeg-binaries": "3.2.2-3",
+    "@ffmpeg-installer/ffmpeg": "1.0.17",
     "fluent-ffmpeg": "^2.1.2",
     "moment": "^2.22.2",
     "semantic-ui-css": "^2.3.0",
