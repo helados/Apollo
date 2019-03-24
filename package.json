@@ -59,6 +59,7 @@
     },
     "deb" : {
       "depends" : [
+        "ffmeg",
         "gconf2",
         "gconf-service",
         "libappindicator1"
