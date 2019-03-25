@@ -10,6 +10,9 @@
 </p>
 
 
+![](Apollo.gif)
+
+
 ## Features 
 > Work in progress, list will be updated
 - Get informations on a YouTube link given
@@ -50,9 +53,6 @@ npm run build:linux
 
 
 ```
-
-# Demo
-![](Apollo.gif)
 
 ---
 
