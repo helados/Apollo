@@ -10,7 +10,7 @@
 </p>
 
 
-![](Apollo.gif)
+![](.github/demo.gif)
 
 
 ## Features 
